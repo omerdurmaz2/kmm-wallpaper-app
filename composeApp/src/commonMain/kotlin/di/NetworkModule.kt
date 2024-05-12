@@ -11,7 +11,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.dsl.module
 
-private const val TOKEN = "SQ3umoj8o4o2I88FouMMAXJ30ey6zqixmF1S3ukiKrgkdKgopphAF8Cw"
+ const val TOKEN = "SQ3umoj8o4o2I88FouMMAXJ30ey6zqixmF1S3ukiKrgkdKgopphAF8Cw"
 private const val BASE_URL = "https://api.pexels.com/v1/"
 
 val providehttpClientModule = module {
@@ -20,11 +20,8 @@ val providehttpClientModule = module {
             defaultRequest {
                 url(BASE_URL)
             }
-            headers {
-                append(HttpHeaders.Authorization, TOKEN)
-            }
             install(ContentNegotiation) {
-                json(json = Json { ignoreUnknownKeys = true }, contentType = ContentType.Any)
+                json(json = Json { ignoreUnknownKeys = true }, contentType = ContentType.Application.Json)
             }
         }
     }
